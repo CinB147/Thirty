@@ -319,20 +319,25 @@
     </LinearLayout>
 
     <!-- Control Buttons -->
+
     <Button
         android:id="@+id/rollButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kasta Tärningar"
-        android:textSize="16sp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#4CAF50"
+        android:text="Kasta Tärningar"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintTop_toBottomOf="@id/diceRows"
+        android:textSize="14sp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:elevation="4dp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/diceRows" />
 
     <TextView
         android:id="@+id/scoreLabel"
@@ -348,26 +353,30 @@
 
     <Spinner
         android:id="@+id/scoreSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintTop_toBottomOf="@id/scoreLabel"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/scoreLabel" />
 
     <Button
         android:id="@+id/confirmScoreButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bekräfta Poäng"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:backgroundTint="#2196F3"
         android:textColor="#FFFFFF"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:elevation="4dp"
+        app:cornerRadius="8dp"
         app:layout_constraintTop_toBottomOf="@id/scoreSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -333,9 +333,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kasta Tärningar"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:backgroundTint="#4CAF50"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:elevation="3dp"
+            app:cornerRadius="6dp" />
 
     </LinearLayout>
 
@@ -381,9 +387,13 @@
             android:backgroundTint="#2196F3"
             android:text="Bekräfta Poäng"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp" />
+            android:textSize="12sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:elevation="3dp"
+            app:cornerRadius="6dp" />
 
         <!-- Result Grid -->
         <LinearLayout

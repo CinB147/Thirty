@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val gameState = GameState()
     private var roundLocked = false
     private val blinkRunnables = mutableMapOf<Int, Runnable>()
+    private val roundLabelTexts = mutableMapOf<Int, String>()
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,7 +98,9 @@ class MainActivity : AppCompatActivity() {
                 
                 // Update the round label with the score
                 val roundIndex = gameState.round - 1
-                roundLabels[roundIndex].text = "${scoreOptionToString(option)}: $score"
+                val scoreText = "${scoreOptionToString(option)}: $score"
+                roundLabels[roundIndex].text = scoreText
+                roundLabelTexts[roundIndex] = scoreText
                 
                 // Delay before next round
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -121,6 +124,7 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putSerializable("gameState", gameState)
         outState.putBoolean("roundLocked", roundLocked)
+        outState.putStringArray("roundLabelTexts", roundLabelTexts.values.toTypedArray())
     }
     
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -141,6 +145,16 @@ class MainActivity : AppCompatActivity() {
             gameState.scores.putAll(restored.scores)
         }
         roundLocked = savedInstanceState.getBoolean("roundLocked", false)
+        
+        // Restore round label texts
+        val savedRoundLabels = savedInstanceState.getStringArray("roundLabelTexts")
+        if (savedRoundLabels != null) {
+            roundLabelTexts.clear()
+            savedRoundLabels.forEachIndexed { index, text ->
+                roundLabelTexts[index] = text
+            }
+        }
+        
         updateScoreSpinner()
         updateUI()
     }
@@ -203,6 +217,8 @@ class MainActivity : AppCompatActivity() {
                         roundDots[i].removeCallbacks(runnable)
                         blinkRunnables.remove(i)
                     }
+                    // Show saved score text for completed rounds
+                    roundLabels[i].text = roundLabelTexts[i] ?: ""
                 }
                 i == gameState.round - 1 -> {
                     // Current round - blinking between filled and empty
