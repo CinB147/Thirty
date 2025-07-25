@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Thirty</string>
+    <string name="score_low">Low</string>
+    <string name="score_4">4</string>
+    <string name="score_5">5</string>
+    <string name="score_6">6</string>
+    <string name="score_7">7</string>
+    <string name="score_8">8</string>
+    <string name="score_9">9</string>
+    <string name="score_10">10</string>
+    <string name="score_11">11</string>
+    <string name="score_12">12</string>
+</resources>
