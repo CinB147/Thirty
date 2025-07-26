@@ -47,7 +47,11 @@ class GameState : Serializable {
         val diceValues = dice.map { it.value }
         val score = when (option) {
             ScoreOption.LOW -> diceValues.filter { it <= 3 }.sum()
-            else -> maxSumOfGroups(diceValues, optionValue(option))
+            else -> {
+                //find optimal grouping of dice that sum to the target
+                //each die can only be used ONCE
+                maxSumOfGroups(diceValues, optionValue(option))
+            }
         }
         
         usedScoreOptions.add(option)
@@ -83,16 +87,50 @@ class GameState : Serializable {
     }
     
     private fun maxSumOfGroups(dice: List<Int>, targetSum: Int): Int {
-        var maxSum = 0
-        val combinations = dice.combinations(1) + dice.combinations(2) + dice.combinations(3) + dice.combinations(4) + dice.combinations(5) + dice.combinations(6)
-        
-        for (combination in combinations) {
-            if (combination.sum() == targetSum) {
-                maxSum += targetSum
+        //use backtracking to find the optimal combination of dice groups to find the maximum possible score by trying all possible
+        //groupings of dice that sum to the target value
+        return findOptimalGroups(dice, targetSum)
+    }
+    
+    private fun findOptimalGroups(dice: List<Int>, targetSum: Int): Int {
+        val sortedDice = dice.sorted()
+        var maxScore = 0
+
+        /* Backtracking procedure (credit: )
+        * The following is a general outline of how a backtracking algorithm works:
+        * Choose an initial solution.
+        * Explore all possible extensions of the current solution.
+        * If an extension leads to a solution, return that solution.
+        * If an extension does not lead to a solution, backtrack to the previous solution and try a different extension.
+        * Repeat steps 2-4 until all possible solutions have been explored.
+        * */
+        //starts with all dice and currentScore = 0
+        fun backtrack(remainingDice: List<Int>, currentScore: Int) {
+            if (remainingDice.isEmpty()) {
+                maxScore = maxOf(maxScore, currentScore)
+                return // found a complete solution
             }
+            /// tries all possible combinations of all possible sizes
+            for (size in 1..remainingDice.size) {
+                val combinations = remainingDice.combinations(size)
+                for (combination in combinations) {
+                    if (combination.sum() == targetSum) {
+                        val newRemaining = remainingDice.toMutableList()
+                        combination.forEach { die ->
+                            newRemaining.remove(die) //make the choice
+                        }
+                        backtrack(newRemaining, currentScore + targetSum) //explore
+                        //implicit backtrack - when recursion returns, the original
+                        // remainingDice list is unchanged for next iteration
+                    }
+                }
+            }
+
+            backtrack(emptyList(), currentScore)
         }
-        
-        return maxSum
+
+        backtrack(sortedDice, 0)
+        return maxScore
     }
     
     private fun <T> List<T>.combinations(k: Int): List<List<T>> {
