@@ -14,7 +14,7 @@ class ResultActivity : AppCompatActivity() {
         val scoreMap = intent.getSerializableExtra("scores") as? Map<String, Int> ?: emptyMap()
         
         try {
-            updateResultGrid(scoreMap) // Landscape layout
+            updateResultGrid(scoreMap) //landscape layout
         } catch (e: Exception) {
             val resultList = findViewById<TextView>(R.id.resultList)
             val totalText = findViewById<TextView>(R.id.totalText)
@@ -66,10 +66,10 @@ class ResultActivity : AppCompatActivity() {
         val result11 = findViewById<TextView>(R.id.result11)
         val result12 = findViewById<TextView>(R.id.result12)
         val resultTotal = findViewById<TextView>(R.id.resultTotal)
-        
+
         var total = 0
         var counter = 0
-        
+
         val scorePairs = listOf(
             "Low" to resultLow,
             "4" to result4,
@@ -82,7 +82,7 @@ class ResultActivity : AppCompatActivity() {
             "11" to result11,
             "12" to result12
         )
-        
+
         for ((option, textView) in scorePairs) {
             counter++
             val score = scoreMap[option]
@@ -93,7 +93,6 @@ class ResultActivity : AppCompatActivity() {
                 textView.text = "$option: -"
             }
         }
-        
         resultTotal.text = "Total: $total"
     }
 } 

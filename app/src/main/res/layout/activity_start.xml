@@ -24,7 +24,9 @@
         android:id="@+id/descriptionText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Ett tärningsspel där du kastar 6 tärningar upp till 3 gånger per omgång. Välj vilka tärningar du vill behålla och räkna poäng baserat på dina val. Ett spel består av 10 omgångar."
+        android:text="Ett tärningsspel där du kastar 6 tärningar upp till 3 gånger per omgång.
+        \n Välj vilka tärningar du vill behålla och räkna poäng baserat på dina val.
+        \n Ett spel består av 10 omgångar."
         android:textSize="16sp"
         android:textColor="#666"
         android:gravity="center"

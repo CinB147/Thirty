@@ -96,7 +96,7 @@ class GameState : Serializable {
         val sortedDice = dice.sorted()
         var maxScore = 0
 
-        /* Backtracking procedure (credit: )
+        /* Backtracking procedure (credit: https://www.geeksforgeeks.org/dsa/backtracking-algorithms/ )
         * The following is a general outline of how a backtracking algorithm works:
         * Choose an initial solution.
         * Explore all possible extensions of the current solution.
@@ -126,7 +126,7 @@ class GameState : Serializable {
                 }
             }
 
-            backtrack(emptyList(), currentScore)
+            backtrack(emptyList(), currentScore) //if the rest of dice are not sum able to target, skip
         }
 
         backtrack(sortedDice, 0)

@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                 // Update the round label with the score
                 val roundIndex = gameState.round - 1
                 val scoreText = "${scoreOptionToString(option)}: $score"
-                roundLabels[roundIndex].text = scoreText
+                // roundLabels[roundIndex].text = scoreText  // Commented out to hide score display
                 roundLabelTexts[roundIndex] = scoreText
                 
                 // Delay before next round
@@ -223,14 +223,14 @@ class MainActivity : AppCompatActivity() {
                 i == gameState.round - 1 -> {
                     // Current round - blinking between filled and empty
                     roundDots[i].setImageResource(R.drawable.dot_filled)
-                    roundLabels[i].text = "?"
+                    // roundLabels[i].text = "?"  // Keep hidden for current round
                     
-                    // Stop any existing blinking animation for this dot
+
                     blinkRunnables[i]?.let { runnable ->
                         roundDots[i].removeCallbacks(runnable)
                     }
                     
-                    // Create blinking animation that switches between filled and empty
+                    //blinking animation that switches between filled and empty
                     val blinkRunnable = object : Runnable {
                         var isFilled = true
                         override fun run() {
@@ -238,7 +238,7 @@ class MainActivity : AppCompatActivity() {
                                 if (isFilled) R.drawable.dot_empty else R.drawable.dot_filled
                             )
                             isFilled = !isFilled
-                            roundDots[i].postDelayed(this, 500) // Switch every 500ms
+                            roundDots[i].postDelayed(this, 500)
                         }
                     }
                     blinkRunnables[i] = blinkRunnable
@@ -248,7 +248,7 @@ class MainActivity : AppCompatActivity() {
                     // Future rounds
                     roundDots[i].setImageResource(R.drawable.dot_empty)
                     roundDots[i].clearAnimation()
-                    roundLabels[i].text = ""
+                    // roundLabels[i].text = ""  // Keep hidden for future rounds
                     // Stop blinking animation if it exists
                     blinkRunnables[i]?.let { runnable ->
                         roundDots[i].removeCallbacks(runnable)
@@ -263,13 +263,22 @@ class MainActivity : AppCompatActivity() {
         confirmScoreButton.isEnabled = !roundLocked && gameState.roll > 0
         diceImageViews.forEach { it.isEnabled = !roundLocked && gameState.roll < 3 }
         
-        // Update result display based on layout (portrait or landscape)
-        try {
-            updateResultGrid() // For landscape layout
-        } catch (e: Exception) {
-            resultText.text = buildResultString() // For portrait layout
+        // Always update the result display for both layouts
+        var total = 0
+        for (option in listOf("Low", "4", "5", "6", "7", "8", "9", "10", "11", "12")) {
+            val score = gameState.scores[scoreOptionFromString(option)]
+            if (score != null) {
+                total += score
+            }
         }
-        
+        // Try to update landscape result grid, if present
+        try {
+            updateResultGrid()
+        } catch (e: Exception) {
+            // Fallback: update portrait result text
+            resultText.text = "Total: $total"
+        }
+
         // Check if game is over
         if (gameState.isGameOver()) {
             val intent = Intent(this, ResultActivity::class.java)
@@ -293,62 +302,25 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun buildResultString(): String {
-        val result = StringBuilder()
         var total = 0
-        var counter = 0
-        
         for (option in listOf("Low", "4", "5", "6", "7", "8", "9", "10", "11", "12")) {
-            counter++
             val score = gameState.scores[scoreOptionFromString(option)]
             if (score != null) {
-                result.append("(Omgång $counter) $option: $score\n")
                 total += score
             }
         }
-        
-        return if (total > 0) "Resultat:\n${result.toString().trim()}\n\nTotal: $total" else ""
+        return if (total > 0) "Total: $total" else ""
     }
     
     private fun updateResultGrid() {
-        val resultLow = findViewById<TextView>(R.id.resultLow)
-        val result4 = findViewById<TextView>(R.id.result4)
-        val result5 = findViewById<TextView>(R.id.result5)
-        val result6 = findViewById<TextView>(R.id.result6)
-        val result7 = findViewById<TextView>(R.id.result7)
-        val result8 = findViewById<TextView>(R.id.result8)
-        val result9 = findViewById<TextView>(R.id.result9)
-        val result10 = findViewById<TextView>(R.id.result10)
-        val result11 = findViewById<TextView>(R.id.result11)
-        val result12 = findViewById<TextView>(R.id.result12)
         val resultTotal = findViewById<TextView>(R.id.resultTotal)
-        
         var total = 0
-        var counter = 0
-        
-        val scorePairs = listOf(
-            "Low" to resultLow,
-            "4" to result4,
-            "5" to result5,
-            "6" to result6,
-            "7" to result7,
-            "8" to result8,
-            "9" to result9,
-            "10" to result10,
-            "11" to result11,
-            "12" to result12
-        )
-        
-        for ((option, textView) in scorePairs) {
-            counter++
+        for (option in listOf("Low", "4", "5", "6", "7", "8", "9", "10", "11", "12")) {
             val score = gameState.scores[scoreOptionFromString(option)]
             if (score != null) {
-                textView.text = "(Omgång $counter) $option: $score"
                 total += score
-            } else {
-                textView.text = "$option: -"
             }
         }
-        
         resultTotal.text = "Total: $total"
     }
     
@@ -386,7 +358,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (gameState.round > 1 || gameState.roll > 0) {
             AlertDialog.Builder(this)
-                .setTitle("Varning")
+                .setTitle("Warning")
                 .setMessage("Är du säker på att du vill avsluta spelet? All framsteg kommer att gå förlorat.")
                 .setPositiveButton("Ja") { _, _ ->
                     val intent = Intent(this, StartActivity::class.java)

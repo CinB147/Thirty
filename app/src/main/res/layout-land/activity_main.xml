@@ -403,125 +403,125 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <!-- Row 1: Low, 4, 5, 6, 7 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+<!--            &lt;!&ndash; Row 1: Low, 4, 5, 6, 7 &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:id="@+id/resultLow"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Low: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/resultLow"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Low: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="4: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result4"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="4: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="5: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result5"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="5: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="6: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result6"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="6: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result7"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="7: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result7"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="7: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <!-- Row 2: 8, 9, 10, 11, 12 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+<!--            &lt;!&ndash; Row 2: 8, 9, 10, 11, 12 &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:id="@+id/result8"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="8: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result8"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="8: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result9"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="9: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result9"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="9: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result10"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="10: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result10"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="10: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result11"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="11: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result11"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="11: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/result12"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="12: -"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/result12"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="12: -"-->
+<!--                    android:textColor="#333"-->
+<!--                    android:textSize="12sp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <!-- Total -->
             <TextView
